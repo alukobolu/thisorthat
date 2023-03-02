@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+      
+          <div class="fadeIn first">
+            <i id="icon" alt="User Icon fa fa-user"></i>
+          </div>
+      
+          <form action="./?next={{ redirect_to }}" method="post">
+              {% csrf_token %}
+              <input type="text" name="username" id="login" class="fadeIn second" placeholder="Username"><br>
+              <input type="password" name="password" id="password" class="fadeIn third"  placeholder="Password"><br>
+              <input type="submit"  class="fadeIn fourth" value="Log In"><br>
+      
+              <div id="formFooter">
+                  <a class="underlineHover" href="#">Forgot Password?</a>
+              </div>
+            
+              {{error}}
+          </form>
+          
+        </div>
+      </div>
+</body>
+</html>

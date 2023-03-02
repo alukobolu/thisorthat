@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThisOrThat</title>
+</head>
+<body>
+    <div class="main">
+        <div class="question">{{post.question}}</div>
+        {% if post.This_filetype == 'text' %}
+       
+        <div class="this" style="background-color: aqua;border: radius 20px; ">
+            {{post.This_text}}
+        </div> 
+        OR 
+        <div class="that" style="background-color: rgb(123, 255, 0);border: radius 20px; ">
+            {{post.That_text}}
+        </div>
+        {% elif post.This_filetype == 'image/jpeg' %}
+        
+        <div class="this">
+            <img src="{{post.This.url}}" style="width: 300px;height:300px;" >
+        </div>
+        <div class="that">
+            <img src="{{post.That.url}}" style="width: 300px;height:300px;" >
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

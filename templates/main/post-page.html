@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This or That</title>
+</head>
+<body>
+    <h5> 
+        {% if user.is_authenticated %}
+        <a href="">Hello,{{user.username}}</a>  | <a href="accounts/logout" >Log out</a>
+        {% else %}
+        <a href="accounts/login">Login</a>  | <a href="accounts/register" >Sign up</a>
+        {% endif %}
+    </h5>
+    
+    <br>
+
+    <h1>{% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </h1>
+
+    <form action="/" method="post" enctype = "multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" value="file" name="type">
+        <input type="text" id="a" name="question">
+        <input type="file" id="a" name="this">
+        <input type="file" id="a" name="that">
+        <input type="submit">
+    </form>
+    <br>
+    <form action="/" method="post" >
+        {% csrf_token %}
+        <input type="hidden" value="text" name="type">
+        <input type="text" id="a" name="question">
+        <input type="text" id="a" name="this">
+        <input type="text" id="a" name="that">
+        <input type="submit">
+    </form>
+    <br>
+    <h1>{% for po in post %}
+       post_id = {{po.post_id}} <br>
+       type = {{po.This_filetype}} <br>
+        {% endfor %}
+    </h1>
+</body>
+</html>
